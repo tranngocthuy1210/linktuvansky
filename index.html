@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đăng ký tư vấn phần mềm quản lý F&amp;B | iPOS.vn</title>
+<meta name="description" content="Đăng ký tư vấn miễn phí phần mềm quản lý bán hàng cho nhà hàng, quán cafe. Chuyên viên iPOS.vn gọi lại trong 10 phút (giờ hành chính).">
+<link rel="icon" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand-50:#EEF5FB; --brand-100:#D6E7F5; --brand-500:#0A6DB8; --brand-600:#005EA3; --brand-700:#004B83; --brand-900:#0B2540;
+    --accent:#F58220; --accent-600:#E0700F;
+    --ink:#0F1C2B; --ink-2:#3A4A5C; --ink-3:#6B7A8C; --line:#DCE4EC; --surface:#F6F9FC; --white:#fff;
+    --success:#16A34A; --danger:#D92D20;
+    --r-sm:8px; --r-md:12px; --r-lg:20px;
+    --shadow-card:0 1px 2px rgba(16,40,70,.06),0 12px 32px -8px rgba(16,40,70,.18);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:96px}
+  body{margin:0;font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.6;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased}
+  img,svg{display:block}
+  a{color:var(--brand-600);text-decoration:none}
+  .container{max-width:1160px;margin:0 auto;padding:0 24px}
+  .icon{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  /* ---------- Header ---------- */
+  .header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+  .header .container{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .header__logo img{height:36px;width:auto}
+  .header__contact{display:flex;align-items:center;gap:12px}
+  .header__hotline{display:flex;align-items:center;gap:10px;color:var(--ink)}
+  .header__hotline .icon-wrap{width:40px;height:40px;border-radius:50%;background:var(--brand-50);color:var(--brand-600);display:grid;place-items:center}
+  .header__hotline small{display:block;font-size:12px;color:var(--ink-3);line-height:1.2}
+  .header__hotline strong{display:block;font-size:16px;font-weight:700;line-height:1.3}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;background:var(--brand-900);color:var(--white);overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:
+      radial-gradient(800px 400px at 0% 0%,rgba(10,109,184,.55),transparent 60%),
+      radial-gradient(600px 400px at 100% 100%,rgba(0,94,163,.5),transparent 60%)}
+  .hero .container{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:64px;padding-top:72px;padding-bottom:80px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 8px;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:13px;font-weight:500;color:#CFE3F5;margin-bottom:24px}
+  .eyebrow b{background:var(--accent);color:#fff;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px}
+  .hero h1{margin:0 0 20px;font-size:44px;line-height:1.18;font-weight:700;letter-spacing:-.02em}
+  .hero h1 span{color:#7CC4FF}
+  .hero__lead{margin:0 0 36px;font-size:18px;line-height:1.65;color:#C3D4E5;max-width:540px}
+  .benefits{list-style:none;margin:0 0 40px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;max-width:560px}
+  .benefits li{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:#E4EEF8}
+  .benefits .icon{width:20px;height:20px;color:#5FD08A;margin-top:2px}
+  .stats{display:flex;gap:0;border-top:1px solid rgba(255,255,255,.14);padding-top:28px;max-width:560px}
+  .stats div{flex:1;padding-right:20px}
+  .stats div + div{padding-left:20px;border-left:1px solid rgba(255,255,255,.14)}
+  .stats strong{display:block;font-size:28px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+  .stats span{font-size:13px;color:#A9BED3}
+
+  /* ---------- Form card ---------- */
+  .form-card{background:var(--white);color:var(--ink);border-radius:var(--r-lg);box-shadow:var(--shadow-card);padding:32px}
+  .form-card__head{margin-bottom:24px}
+  .form-card__head h2{margin:0 0 6px;font-size:22px;font-weight:700;letter-spacing:-.01em}
+  .form-card__head p{margin:0;font-size:14px;color:var(--ink-3);display:flex;align-items:center;gap:6px}
+  .form-card__head p .icon{width:16px;height:16px;color:var(--success)}
+
+  .field{margin-bottom:16px}
+  .field__label{display:block;margin-bottom:6px;font-size:14px;font-weight:600;color:var(--ink-2)}
+  .field__label .req{color:var(--danger);margin-left:2px}
+  .field__label .opt{font-weight:400;color:var(--ink-3)}
+  .control{position:relative}
+  .control input,.control select,.control textarea{
+    width:100%;height:48px;padding:0 14px;font:inherit;font-size:15px;color:var(--ink);background:var(--white);
+    border:1px solid var(--line);border-radius:var(--r-sm);outline:none;transition:border-color .15s,box-shadow .15s;appearance:none;-webkit-appearance:none}
+  .control textarea{height:auto;min-height:84px;padding:12px 14px;resize:vertical;line-height:1.5}
+  .control select{padding-right:40px;cursor:pointer}
+  .control select:invalid{color:var(--ink-3)}
+  .control .chev{position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--ink-3);width:18px;height:18px}
+  .control input::placeholder,.control textarea::placeholder{color:#9AA8B6}
+  .control input:hover,.control select:hover,.control textarea:hover{border-color:#B9C7D5}
+  .control input:focus,.control select:focus,.control textarea:focus{border-color:var(--brand-600);box-shadow:0 0 0 4px rgba(0,94,163,.12)}
+  .field.is-invalid input,.field.is-invalid select{border-color:var(--danger)}
+  .field.is-invalid input:focus,.field.is-invalid select:focus{box-shadow:0 0 0 4px rgba(217,45,32,.12)}
+  .field__error{display:none;align-items:center;gap:6px;margin-top:6px;font-size:13px;color:var(--danger)}
+  .field__error .icon{width:14px;height:14px}
+  .field.is-invalid .field__error{display:flex}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+  .channel{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .channel input{position:absolute;opacity:0;pointer-events:none}
+  .channel label{display:flex;align-items:center;justify-content:center;gap:8px;height:44px;border:1px solid var(--line);border-radius:var(--r-sm);font-size:14px;font-weight:500;color:var(--ink-2);cursor:pointer;transition:all .15s}
+  .channel label:hover{border-color:#B9C7D5}
+  .channel input:checked + label{border-color:var(--brand-600);background:var(--brand-50);color:var(--brand-700);font-weight:600;box-shadow:inset 0 0 0 1px var(--brand-600)}
+  .channel input:focus-visible + label{box-shadow:0 0 0 4px rgba(0,94,163,.18)}
+  .channel .icon{width:18px;height:18px}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 24px;border:0;border-radius:var(--r-sm);font:inherit;font-size:16px;font-weight:600;cursor:pointer;transition:background .15s,transform .05s,box-shadow .15s;white-space:nowrap}
+  .btn:active{transform:translateY(1px)}
+  .btn:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(245,130,32,.3)}
+  .btn--primary{background:var(--accent);color:#fff;box-shadow:0 6px 16px -6px rgba(245,130,32,.7)}
+  .btn--primary:hover{background:var(--accent-600)}
+  .btn--block{width:100%;margin-top:8px}
+  .btn[disabled]{opacity:.7;cursor:progress}
+  .spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
+  .is-loading .spinner{display:block}
+  .is-loading .btn__arrow{display:none}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .form-card__foot{margin:16px 0 0;font-size:12.5px;line-height:1.5;color:var(--ink-3);display:flex;gap:8px;align-items:flex-start}
+  .form-card__foot .icon{width:14px;height:14px;margin-top:2px}
+  .form-alert{display:none;gap:10px;align-items:flex-start;padding:12px 14px;margin-bottom:16px;border-radius:var(--r-sm);background:#FEF3F2;color:#B42318;font-size:14px;border:1px solid #FECDCA}
+  .form-alert.show{display:flex}
+  .form-alert .icon{width:18px;height:18px;margin-top:1px}
+
+  .success{display:none;text-align:center;padding:16px 0 8px}
+  .success__icon{width:64px;height:64px;margin:0 auto 20px;border-radius:50%;background:#DCFCE7;color:var(--success);display:grid;place-items:center}
+  .success__icon .icon{width:30px;height:30px;stroke-width:2.5}
+  .success h3{margin:0 0 8px;font-size:22px;font-weight:700}
+  .success p{margin:0 0 24px;color:var(--ink-2);font-size:15px}
+  .success ol{text-align:left;margin:0;padding:16px 16px 16px 36px;background:var(--surface);border-radius:var(--r-md);font-size:14px;color:var(--ink-2)}
+  .success ol li + li{margin-top:6px}
+
+  /* ---------- Sections ---------- */
+  .section{padding:96px 0}
+  .section--alt{background:var(--surface)}
+  .section__head{max-width:640px;margin:0 auto 56px;text-align:center}
+  .section__kicker{display:inline-block;margin-bottom:12px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-600)}
+  .section__head h2{margin:0 0 14px;font-size:34px;line-height:1.25;font-weight:700;letter-spacing:-.02em}
+  .section__head p{margin:0;font-size:17px;color:var(--ink-2)}
+
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .feature{padding:28px;background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);transition:border-color .2s,box-shadow .2s}
+  .feature:hover{border-color:var(--brand-100);box-shadow:0 12px 32px -16px rgba(16,40,70,.25)}
+  .feature__icon{width:48px;height:48px;margin-bottom:20px;border-radius:var(--r-md);background:var(--brand-50);color:var(--brand-600);display:grid;place-items:center}
+  .feature__icon .icon{width:24px;height:24px}
+  .feature h3{margin:0 0 8px;font-size:18px;font-weight:600}
+  .feature p{margin:0;font-size:15px;color:var(--ink-2)}
+
+  .segments{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  .segment{padding:24px 16px;text-align:center;background:var(--white);border:1px solid var(--line);border-radius:var(--r-md)}
+  .segment .icon{width:32px;height:32px;margin:0 auto 12px;color:var(--brand-600);stroke-width:1.6}
+  .segment h3{margin:0 0 4px;font-size:16px;font-weight:600}
+  .segment p{margin:0;font-size:13px;color:var(--ink-3)}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;counter-reset:step;position:relative}
+  .step{position:relative;text-align:center;padding:0 12px}
+  .step__num{width:56px;height:56px;margin:0 auto 20px;border-radius:50%;background:var(--white);border:2px solid var(--brand-600);color:var(--brand-600);font-size:20px;font-weight:700;display:grid;place-items:center;position:relative;z-index:1}
+  .steps::before{content:"";position:absolute;top:28px;left:16.66%;right:16.66%;border-top:2px dashed var(--brand-100)}
+  .step h3{margin:0 0 8px;font-size:18px;font-weight:600}
+  .step p{margin:0;font-size:15px;color:var(--ink-2)}
+
+  .faq{max-width:760px;margin:0 auto}
+  .faq details{border-bottom:1px solid var(--line)}
+  .faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font-size:17px;font-weight:600;cursor:pointer}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .icon{color:var(--ink-3);transition:transform .2s}
+  .faq details[open] summary .icon{transform:rotate(45deg);color:var(--brand-600)}
+  .faq details p{margin:0 0 22px;color:var(--ink-2);font-size:15px;max-width:680px}
+
+  .cta{background:var(--brand-600);color:#fff}
+  .cta .container{display:flex;align-items:center;justify-content:space-between;gap:32px;padding-top:56px;padding-bottom:56px}
+  .cta h2{margin:0 0 6px;font-size:28px;font-weight:700;letter-spacing:-.01em}
+  .cta p{margin:0;color:#CFE3F5}
+  .cta__actions{display:flex;gap:12px;flex:none}
+  .btn--ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5)}
+  .btn--ghost:hover{background:rgba(255,255,255,.08)}
+
+  .footer{background:var(--brand-900);color:#9FB3C8;font-size:14px}
+  .footer .container{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-top:32px;padding-bottom:32px}
+  .footer strong{color:#fff;font-weight:600}
+  .footer a{color:#CFE3F5}
+
+  /* Mobile sticky CTA */
+  .mobile-cta{display:none}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:1024px){
+    .hero .container{grid-template-columns:1fr;gap:48px;padding-top:56px;padding-bottom:64px}
+    .hero__content{max-width:640px}
+    .form-card{max-width:560px;width:100%}
+    .features{grid-template-columns:repeat(2,1fr)}
+    .segments{grid-template-columns:repeat(3,1fr)}
+  }
+  @media (max-width:640px){
+    .container{padding:0 16px}
+    .header .container{height:64px}
+    .header__logo img{height:30px}
+    .header__hotline small{display:none}
+    .header__hotline strong{font-size:15px}
+    .header__hotline .icon-wrap{width:36px;height:36px}
+    .hero .container{padding-top:40px;padding-bottom:48px;gap:36px}
+    .hero h1{font-size:30px}
+    .hero__lead{font-size:16px;margin-bottom:28px}
+    .benefits{grid-template-columns:1fr;margin-bottom:32px}
+    .stats strong{font-size:22px}
+    .stats div{padding-right:12px}
+    .stats div + div{padding-left:12px}
+    .form-card{padding:24px 20px;border-radius:16px}
+    .row{grid-template-columns:1fr;gap:0}
+    .section{padding:64px 0}
+    .section__head{margin-bottom:36px}
+    .section__head h2{font-size:26px}
+    .section__head p{font-size:16px}
+    .features{grid-template-columns:1fr;gap:16px}
+    .segments{grid-template-columns:1fr 1fr;gap:12px}
+    .steps{grid-template-columns:1fr;gap:28px}
+    .steps::before{display:none}
+    .cta .container{flex-direction:column;align-items:stretch;text-align:center}
+    .cta__actions{flex-direction:column}
+    .footer .container{flex-direction:column;align-items:flex-start;padding-bottom:96px}
+    .mobile-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 24px -12px rgba(16,40,70,.25);transform:translateY(110%);transition:transform .25s}
+    .mobile-cta.show{transform:none}
+    .mobile-cta .btn{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <a class="header__logo" href="#" aria-label="iPOS.vn"><img src="logo.svg" alt="iPOS.vn" width="161" height="54"></a>
+    <div class="header__contact">
+      <a class="header__hotline" href="tel:19004766">
+        <span class="icon-wrap"><i data-lucide="phone" class="icon" aria-hidden="true"></i></span>
+        <span><small>Hotline tư vấn</small><strong>1900 4766</strong></span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container">
+    <div class="hero__content">
+      <span class="eyebrow"><b>Miễn phí</b> Tư vấn &amp; dùng thử phần mềm</span>
+      <h1>Phần mềm quản lý bán hàng <span>chuyên biệt cho ngành F&amp;B</span></h1>
+      <p class="hero__lead">Đăng ký để được chuyên viên iPOS.vn tư vấn giải pháp phù hợp với nhà hàng, quán cafe của bạn — từ bán hàng, kho, nhân sự đến kết nối app giao đồ ăn.</p>
+      <ul class="benefits">
+        <li><i data-lucide="circle-check" class="icon" aria-hidden="true"></i>Gọi lại trong 10 phút (giờ hành chính)</li>
+        <li><i data-lucide="circle-check" class="icon" aria-hidden="true"></i>Cài đặt &amp; hướng dẫn tận nơi</li>
+        <li><i data-lucide="circle-check" class="icon" aria-hidden="true"></i>Hỗ trợ kỹ thuật 24/7</li>
+        <li><i data-lucide="circle-check" class="icon" aria-hidden="true"></i>Đáp ứng hóa đơn điện tử theo NĐ 70</li>
+      </ul>
+      <div class="stats">
+        <div><strong>100.000+</strong><span>Thương hiệu tin dùng</span></div>
+        <div><strong>15+</strong><span>Năm kinh nghiệm</span></div>
+        <div><strong>34</strong><span>Tỉnh thành có mặt</span></div>
+      </div>
+    </div>
+
+    <div class="form-card" id="dang-ky">
+      <div id="formView">
+        <div class="form-card__head">
+          <h2>Đăng ký nhận tư vấn</h2>
+          <p><i data-lucide="clock" class="icon" aria-hidden="true"></i>Chỉ mất 30 giây để hoàn tất</p>
+        </div>
+
+        <div class="form-alert" id="formAlert" role="alert">
+          <i data-lucide="circle-alert" class="icon" aria-hidden="true"></i><span></span>
+        </div>
+
+        <form id="leadForm" novalidate>
+          <div class="field">
+            <label class="field__label" for="name">Họ và tên<span class="req">*</span></label>
+            <div class="control"><input id="name" name="name" type="text" placeholder="Ví dụ: Nguyễn Văn An" autocomplete="name" required></div>
+            <div class="field__error"><i data-lucide="circle-alert" class="icon" aria-hidden="true"></i>Vui lòng nhập họ và tên</div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="phone">Số điện thoại<span class="req">*</span></label>
+            <div class="control"><input id="phone" name="phone" type="tel" inputmode="tel" placeholder="Ví dụ: 0912 345 678" autocomplete="tel" required></div>
+            <div class="field__error"><i data-lucide="circle-alert" class="icon" aria-hidden="true"></i>Số điện thoại chưa đúng định dạng</div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label class="field__label" for="city">Tỉnh/Thành phố<span class="req">*</span></label>
+              <div class="control">
+                <select id="city" name="city" required><option value="" disabled selected>Chọn tỉnh/thành</option></select>
+                <i data-lucide="chevron-down" class="icon chev" aria-hidden="true"></i>
+              </div>
+              <div class="field__error"><i data-lucide="circle-alert" class="icon" aria-hidden="true"></i>Vui lòng chọn tỉnh/thành</div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="model">Mô hình kinh doanh<span class="req">*</span></label>
+              <div class="control">
+                <select id="model" name="model" required>
+                  <option value="" disabled selected>Chọn mô hình</option>
+                  <option>Nhà hàng/Quán ăn</option>
+                  <option>Cafe/Trà sữa</option>
+                  <option>Bi-a</option>
+                  <option>Karaoke</option>
+                  <option>Khác</option>
+                </select>
+                <i data-lucide="chevron-down" class="icon chev" aria-hidden="true"></i>
+              </div>
+              <div class="field__error"><i data-lucide="circle-alert" class="icon" aria-hidden="true"></i>Vui lòng chọn mô hình</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field__label" id="channelLabel">Bạn muốn được liên hệ qua</span>
+            <div class="channel" role="radiogroup" aria-labelledby="channelLabel">
+              <input type="radio" id="ch-call" name="channel" value="Gọi điện" checked>
+              <label for="ch-call"><i data-lucide="phone" class="icon" aria-hidden="true"></i>Gọi điện</label>
+              <input type="radio" id="ch-zalo" name="channel" value="Zalo">
+              <label for="ch-zalo"><i data-lucide="message-circle" class="icon" aria-hidden="true"></i>Nhắn Zalo</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="note">Nhu cầu của bạn <span class="opt">(không bắt buộc)</span></label>
+            <div class="control"><textarea id="note" name="note" rows="3" placeholder="Ví dụ: Quán cafe 2 chi nhánh, cần quản lý kho và kết nối GrabFood"></textarea></div>
+          </div>
+
+          <button class="btn btn--primary btn--block" type="submit" id="submitBtn">
+            <span class="spinner" aria-hidden="true"></span>
+            <span class="btn__text">Đăng ký tư vấn miễn phí</span>
+            <i data-lucide="arrow-right" class="icon btn__arrow" aria-hidden="true"></i>
+          </button>
+
+          <p class="form-card__foot"><i data-lucide="lock" class="icon" aria-hidden="true"></i>Thông tin của bạn được bảo mật tuyệt đối và chỉ dùng để liên hệ tư vấn.</p>
+        </form>
+      </div>
+
+      <div class="success" id="successView" role="status" aria-live="polite">
+        <div class="success__icon"><i data-lucide="check" class="icon" aria-hidden="true"></i></div>
+        <h3>Đăng ký thành công</h3>
+        <p>Cảm ơn <strong id="successName">bạn</strong>! Yêu cầu của bạn đã được ghi nhận.</p>
+        <ol>
+          <li>Chuyên viên liên hệ qua <strong id="successChannel">điện thoại</strong> trong vòng 10 phút (giờ hành chính).</li>
+          <li>Tư vấn giải pháp phù hợp với mô hình của bạn.</li>
+          <li>Hỗ trợ dùng thử và cài đặt miễn phí.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <span class="section__kicker">Giải pháp toàn diện</span>
+      <h2>Một nền tảng, quản lý toàn bộ cửa hàng</h2>
+      <p>Chuẩn hóa quy trình, tiết kiệm chi phí và tăng trưởng bền vững cho mọi mô hình kinh doanh ẩm thực.</p>
+    </div>
+    <div class="features">
+      <article class="feature">
+        <div class="feature__icon"><i data-lucide="receipt" class="icon" aria-hidden="true"></i></div>
+        <h3>Quản lý bán hàng</h3>
+        <p>Order nhanh, thanh toán đa phương thức, xuất hóa đơn điện tử từ máy tính tiền.</p>
+      </article>
+      <article class="feature">
+        <div class="feature__icon"><i data-lucide="package" class="icon" aria-hidden="true"></i></div>
+        <h3>Quản lý tồn kho</h3>
+        <p>Theo dõi nguyên vật liệu theo định lượng, cảnh báo tồn kho, giảm thất thoát.</p>
+      </article>
+      <article class="feature">
+        <div class="feature__icon"><i data-lucide="users" class="icon" aria-hidden="true"></i></div>
+        <h3>Quản lý nhân sự</h3>
+        <p>Chấm công, xếp ca, tính lương tự động cho từng chi nhánh.</p>
+      </article>
+      <article class="feature">
+        <div class="feature__icon"><i data-lucide="heart-handshake" class="icon" aria-hidden="true"></i></div>
+        <h3>Chăm sóc khách hàng</h3>
+        <p>Tích điểm, khách hàng thân thiết và chương trình khuyến mãi tự động.</p>
+      </article>
+      <article class="feature">
+        <div class="feature__icon"><i data-lucide="bike" class="icon" aria-hidden="true"></i></div>
+        <h3>Kết nối app giao đồ ăn</h3>
+        <p>Đồng bộ đơn GrabFood, ShopeeFood về một màn hình duy nhất.</p>
+      </article>
+      <article class="feature">
+        <div class="feature__icon"><i data-lucide="chart-line" class="icon" aria-hidden="true"></i></div>
+        <h3>Báo cáo thời gian thực</h3>
+        <p>Theo dõi doanh thu, lợi nhuận mọi lúc mọi nơi ngay trên điện thoại.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__head">
+      <span class="section__kicker">Phù hợp mọi mô hình</span>
+      <h2>Từ quán nhỏ đến chuỗi nhiều chi nhánh</h2>
+    </div>
+    <div class="segments">
+      <div class="segment"><i data-lucide="utensils" class="icon" aria-hidden="true"></i><h3>Nhà hàng</h3><p>Âu, Á, Buffet</p></div>
+      <div class="segment"><i data-lucide="coffee" class="icon" aria-hidden="true"></i><h3>Cafe &amp; Trà sữa</h3><p>Quán đồ uống, Bar/Pub</p></div>
+      <div class="segment"><i data-lucide="zap" class="icon" aria-hidden="true"></i><h3>Quán ăn nhanh</h3><p>Phở, bún, gà rán, pizza</p></div>
+      <div class="segment"><i data-lucide="store" class="icon" aria-hidden="true"></i><h3>Chuỗi cửa hàng</h3><p>Quản lý tập trung</p></div>
+      <div class="segment"><i data-lucide="mic-vocal" class="icon" aria-hidden="true"></i><h3>Giải trí</h3><p>Karaoke, Bi-a</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <span class="section__kicker">Quy trình</span>
+      <h2>Bắt đầu chỉ với 3 bước</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step__num">1</div><h3>Đăng ký thông tin</h3><p>Điền form trong 30 giây, không cần chuẩn bị gì thêm.</p></div>
+      <div class="step"><div class="step__num">2</div><h3>Nhận tư vấn</h3><p>Chuyên viên liên hệ, khảo sát nhu cầu và đề xuất giải pháp.</p></div>
+      <div class="step"><div class="step__num">3</div><h3>Dùng thử &amp; triển khai</h3><p>Cài đặt, hướng dẫn tận nơi để bạn vận hành ngay.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__head">
+      <span class="section__kicker">Câu hỏi thường gặp</span>
+      <h2>Bạn cần biết thêm?</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Đăng ký tư vấn có mất phí không?<i data-lucide="plus" class="icon" aria-hidden="true"></i></summary>
+        <p>Hoàn toàn miễn phí. Bạn chỉ cần để lại thông tin, chuyên viên sẽ liên hệ để tư vấn và hỗ trợ dùng thử.</p>
+      </details>
+      <details>
+        <summary>Bao lâu thì tôi được liên hệ?<i data-lucide="plus" class="icon" aria-hidden="true"></i></summary>
+        <p>Trong giờ hành chính, chuyên viên sẽ gọi lại trong khoảng 10 phút. Ngoài giờ, bạn sẽ được liên hệ vào đầu giờ làm việc kế tiếp.</p>
+      </details>
+      <details>
+        <summary>Phần mềm có dùng được trên điện thoại không?<i data-lucide="plus" class="icon" aria-hidden="true"></i></summary>
+        <p>Có. Phần mềm hoạt động trên máy POS, máy tính, máy tính bảng và điện thoại; chủ quán theo dõi báo cáo từ xa mọi lúc.</p>
+      </details>
+      <details>
+        <summary>Phần mềm có xuất hóa đơn điện tử được không?<i data-lucide="plus" class="icon" aria-hidden="true"></i></summary>
+        <p>Có. Máy tính tiền iPOS.vn đáp ứng điều kiện xuất hóa đơn điện tử khởi tạo từ máy tính tiền theo Nghị định 70/2025/NĐ-CP.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div>
+      <h2>Sẵn sàng nâng cấp cách quản lý cửa hàng?</h2>
+      <p>Đăng ký ngay để được tư vấn và dùng thử miễn phí.</p>
+    </div>
+    <div class="cta__actions">
+      <a class="btn btn--primary" href="#dang-ky">Đăng ký tư vấn<i data-lucide="arrow-right" class="icon" aria-hidden="true"></i></a>
+      <a class="btn btn--ghost" href="tel:19004766"><i data-lucide="phone" class="icon" aria-hidden="true"></i>Gọi 1900 4766</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div><strong>Công ty Cổ phần iPOS.vn</strong><br>Tầng 11, Tòa tháp VP Hòa Bình, 106 Hoàng Quốc Việt, Nghĩa Đô, Hà Nội</div>
+    <div>Hotline: <a href="tel:19004766">1900 4766</a> · Email: <a href="mailto:info@ipos.vn">info@ipos.vn</a></div>
+  </div>
+</footer>
+
+<div class="mobile-cta" id="mobileCta">
+  <a class="btn btn--primary" href="#dang-ky">Đăng ký tư vấn miễn phí</a>
+</div>
+
+<script>
+  // ===== CẤU HÌNH: dán URL Web App (Google Apps Script) vào đây =====
+  const SCRIPT_URL = "";
+
+  const CITIES = ["Hà Nội","TP. Hồ Chí Minh","Đà Nẵng","Hải Phòng","Cần Thơ","An Giang","Bà Rịa - Vũng Tàu","Bắc Giang","Bắc Kạn","Bạc Liêu","Bắc Ninh","Bến Tre","Bình Định","Bình Dương","Bình Phước","Bình Thuận","Cà Mau","Cao Bằng","Đắk Lắk","Đắk Nông","Điện Biên","Đồng Nai","Đồng Tháp","Gia Lai","Hà Giang","Hà Nam","Hà Tĩnh","Hải Dương","Hậu Giang","Hòa Bình","Hưng Yên","Khánh Hòa","Kiên Giang","Kon Tum","Lai Châu","Lâm Đồng","Lạng Sơn","Lào Cai","Long An","Nam Định","Nghệ An","Ninh Bình","Ninh Thuận","Phú Thọ","Phú Yên","Quảng Bình","Quảng Nam","Quảng Ngãi","Quảng Ninh","Quảng Trị","Sóc Trăng","Sơn La","Tây Ninh","Thái Bình","Thái Nguyên","Thanh Hóa","Thừa Thiên Huế","Tiền Giang","Trà Vinh","Tuyên Quang","Vĩnh Long","Vĩnh Phúc","Yên Bái"];
+  const citySel = document.getElementById("city");
+  CITIES.forEach((c, i) => {
+    if (i === 5) { const sep = new Option("──────────", ""); sep.disabled = true; citySel.add(sep); }
+    citySel.add(new Option(c, c));
+  });
+
+  const form = document.getElementById("leadForm");
+  const alertBox = document.getElementById("formAlert");
+  const btn = document.getElementById("submitBtn");
+  const params = new URLSearchParams(location.search);
+  const cleanPhone = v => v.replace(/[\s.\-()]/g, "").replace(/^\+?84/, "0");
+
+  const rules = {
+    name: v => v.trim().length >= 2,
+    phone: v => /^0(3|5|7|8|9)\d{8}$/.test(cleanPhone(v)),
+    city: v => !!v,
+    model: v => !!v,
+  };
+  const setInvalid = (id, bad) => {
+    const el = document.getElementById(id);
+    el.closest(".field").classList.toggle("is-invalid", bad);
+    el.setAttribute("aria-invalid", bad);
+  };
+  Object.keys(rules).forEach(id => {
+    const el = document.getElementById(id);
+    el.addEventListener("blur", () => { if (el.value) setInvalid(id, !rules[id](el.value)); });
+    el.addEventListener(el.tagName === "SELECT" ? "change" : "input", () => {
+      if (el.closest(".field").classList.contains("is-invalid")) setInvalid(id, !rules[id](el.value));
+    });
+  });
+
+  function showAlert(msg){ alertBox.querySelector("span").textContent = msg; alertBox.classList.add("show"); }
+
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    alertBox.classList.remove("show");
+    const d = Object.fromEntries(new FormData(form));
+    let firstBad = null;
+    Object.keys(rules).forEach(id => {
+      const bad = !rules[id](d[id] || "");
+      setInvalid(id, bad);
+      if (bad && !firstBad) firstBad = id;
+    });
+    if (firstBad) { document.getElementById(firstBad).focus(); return; }
+
+    if (!SCRIPT_URL) { showAlert("Bản xem thử: form chưa được kết nối nơi lưu dữ liệu."); return; }
+
+    const payload = {
+      ...d, phone: cleanPhone(d.phone), page: location.href,
+      utm_source: params.get("utm_source") || "", utm_medium: params.get("utm_medium") || "",
+      utm_campaign: params.get("utm_campaign") || "", utm_term: params.get("utm_term") || "",
+      utm_content: params.get("utm_content") || "",
+    };
+
+    btn.disabled = true; btn.classList.add("is-loading");
+    btn.querySelector(".btn__text").textContent = "Đang gửi...";
+    try {
+      await fetch(SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload) });
+      document.getElementById("successName").textContent = d.name.trim().split(/\s+/).pop();
+      document.getElementById("successChannel").textContent = d.channel === "Zalo" ? "Zalo" : "điện thoại";
+      document.getElementById("formView").style.display = "none";
+      document.getElementById("successView").style.display = "block";
+    } catch (err) {
+      showAlert("Gửi chưa thành công. Vui lòng thử lại hoặc gọi 1900 4766.");
+    } finally {
+      btn.disabled = false; btn.classList.remove("is-loading");
+      btn.querySelector(".btn__text").textContent = "Đăng ký tư vấn miễn phí";
+    }
+  });
+
+  // Nút đăng ký cố định trên mobile: ẩn khi form đang hiển thị
+  const mobileCta = document.getElementById("mobileCta");
+  new IntersectionObserver(([en]) => mobileCta.classList.toggle("show", !en.isIntersecting && window.scrollY > 200))
+    .observe(document.getElementById("dang-ky"));
+  window.addEventListener("scroll", () => {
+    const r = document.getElementById("dang-ky").getBoundingClientRect();
+    mobileCta.classList.toggle("show", window.scrollY > 200 && (r.bottom < 0 || r.top > innerHeight));
+  }, { passive: true });
+</script>
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>
