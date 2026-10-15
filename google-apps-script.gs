@@ -8,8 +8,8 @@ const NOTIFY_EMAIL = "";
 
 const HEADERS = [
   "Thời gian", "Họ và tên", "Số điện thoại", "Tỉnh/Thành", "Mô hình kinh doanh",
-  "Liên hệ qua", "Nhu cầu", "utm_source", "utm_medium", "utm_campaign",
-  "utm_term", "utm_content", "Trang",
+  "Liên hệ qua", "Nhu cầu", "Nguồn khách", "Hình thức", "Chiến dịch",
+  "Từ khóa", "Mẫu quảng cáo", "Trang đăng ký",
 ];
 
 function doPost(e) {
