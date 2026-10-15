@@ -478,6 +478,39 @@
   const params = new URLSearchParams(location.search);
   const cleanPhone = v => v.replace(/[\s.\-()]/g, "").replace(/^\+?84/, "0");
 
+  // Tự nhận diện nguồn khách: ưu tiên utm trên link, sau đó app đang mở link, mã click, trang giới thiệu
+  function detectSource() {
+    const p = k => params.get(k) || "";
+    if (p("utm_source")) return { source: p("utm_source"), medium: p("utm_medium") };
+    const ua = navigator.userAgent;
+    const ref = (() => { try { return new URL(document.referrer).hostname.replace(/^www\./, ""); } catch { return ""; } })();
+    if (p("gclid") || p("gbraid") || p("wbraid")) return { source: "Google", medium: "Quảng cáo" };
+    if (p("ttclid")) return { source: "TikTok", medium: "Quảng cáo" };
+    if (/Zalo/i.test(ua) || /zalo/.test(ref)) return { source: "Zalo", medium: "Ứng dụng Zalo" };
+    if (/Messenger|FB_IAB\/MESSENGER/i.test(ua) || /messenger\.com/.test(ref)) return { source: "Facebook", medium: "Messenger" };
+    if (/Instagram/i.test(ua) || /instagram\.com/.test(ref)) return { source: "Instagram", medium: "Mạng xã hội" };
+    if (/musical_ly|BytedanceWebview|TikTok/i.test(ua) || /tiktok\.com/.test(ref)) return { source: "TikTok", medium: "Mạng xã hội" };
+    if (/FBAN|FBAV|FB_IAB/i.test(ua) || p("fbclid") || /facebook\.com|fb\.com/.test(ref)) return { source: "Facebook", medium: "Mạng xã hội" };
+    if (/google\./.test(ref)) return { source: "Google", medium: "Tìm kiếm" };
+    if (/bing\.com|coccoc\.com|yahoo\./.test(ref)) return { source: ref.split(".")[0], medium: "Tìm kiếm" };
+    if (/youtube\.com/.test(ref)) return { source: "YouTube", medium: "Mạng xã hội" };
+    if (ref && ref !== location.hostname) return { source: ref, medium: "Website khác" };
+    return null;
+  }
+  // Ghi nhớ nguồn của lần truy cập đầu (30 ngày) để khách quay lại trực tiếp vẫn giữ đúng nguồn
+  const attribution = (() => {
+    const KEY = "lead_src", now = Date.now();
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(KEY)); } catch {}
+    if (saved && now - saved.t > 30 * 864e5) saved = null;
+    const found = detectSource();
+    const a = found
+      ? { ...found, campaign: params.get("utm_campaign") || "", term: params.get("utm_term") || "", content: params.get("utm_content") || "", t: now }
+      : saved || { source: "Trực tiếp", medium: "Không xác định", campaign: "", term: "", content: "", t: now };
+    try { if (found || !saved) localStorage.setItem(KEY, JSON.stringify(a)); } catch {}
+    return a;
+  })();
+
   const rules = {
     name: v => v.trim().length >= 2,
     phone: v => /^0(3|5|7|8|9)\d{8}$/.test(cleanPhone(v)),
@@ -515,9 +548,8 @@
 
     const payload = {
       ...d, phone: cleanPhone(d.phone), page: location.href,
-      utm_source: params.get("utm_source") || "", utm_medium: params.get("utm_medium") || "",
-      utm_campaign: params.get("utm_campaign") || "", utm_term: params.get("utm_term") || "",
-      utm_content: params.get("utm_content") || "",
+      utm_source: attribution.source, utm_medium: attribution.medium,
+      utm_campaign: attribution.campaign, utm_term: attribution.term, utm_content: attribution.content,
     };
 
     btn.disabled = true; btn.classList.add("is-loading");
