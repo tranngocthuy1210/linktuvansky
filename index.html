@@ -167,6 +167,8 @@
   .footer{background:var(--brand-900);color:#9FB3C8;font-size:14px}
   .footer .container{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-top:32px;padding-bottom:32px}
   .footer strong{color:#fff;font-weight:600}
+  .footer__company p{margin:6px 0 0}
+  .footer__company span{color:#CFE3F5;font-weight:500}
   .footer a{color:#CFE3F5}
 
   /* Mobile sticky CTA */
@@ -179,6 +181,7 @@
     .form-card{max-width:560px;width:100%}
     .features{grid-template-columns:repeat(2,1fr)}
     .segments{grid-template-columns:repeat(3,1fr)}
+    .cta .container{flex-direction:column;align-items:flex-start}
   }
   @media (max-width:640px){
     .container{padding:0 16px}
@@ -452,7 +455,11 @@
 
 <footer class="footer">
   <div class="container">
-    <div><strong>Công ty Cổ phần iPOS.vn</strong><br>Tầng 11, Tòa tháp VP Hòa Bình, 106 Hoàng Quốc Việt, Nghĩa Đô, Hà Nội</div>
+    <div class="footer__company">
+      <strong>Công ty Cổ phần iPOS.vn</strong>
+      <p><span>Hà Nội:</span> Tầng 11, Tòa tháp VP Hòa Bình, 106 Hoàng Quốc Việt, Phường Nghĩa Đô</p>
+      <p><span>TP. Hồ Chí Minh:</span> Tầng 12, Tòa nhà Lottery Tower, 77 Trần Nhân Tôn, Phường An Đông</p>
+    </div>
     <div>Hotline: <a href="tel:0342109501">0342 109 501</a> · Email: <a href="mailto:info@ipos.vn">info@ipos.vn</a></div>
   </div>
 </footer>
